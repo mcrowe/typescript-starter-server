@@ -1,5 +1,5 @@
 import express = require('express')
-import Q from '../lib/query'
+import Q from '@mcrowe/sql-builder'
 import safe from '@mcrowe/safe-async-express-errors'
 import db from './db'
 
