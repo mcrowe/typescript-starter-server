@@ -1,0 +1,16 @@
+{
+  "compileOnSave": true,
+  "allowJS": false,
+  "compilerOptions": {
+    "watch": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": false,
+    "strictNullChecks": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

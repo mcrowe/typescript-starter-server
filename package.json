@@ -1,0 +1,36 @@
+{
+  "name": "typescript-start-server",
+  "version": "0.0.1",
+  "description": "typescript-starter-server",
+  "main": "src/index.js",
+  "scripts": {
+    "watch": "./node_modules/nodemon/bin/nodemon.js --watch src --watch .env -e ts --exec 'npm start'",
+    "start": "./node_modules/ts-node/dist/bin.js src/index.ts",
+    "test": "./node_modules/mocha/bin/mocha -u qunit --recursive -r ./node_modules/ts-node/register test/**/*.ts"
+  },
+  "author": "Mitch Crowe <crowe.mitch@gmail.com> (http://www.mitchcrowe.com)",
+  "license": "ISC",
+  "engines": {
+    "node": "6.4.0"
+  },
+  "dependencies": {
+    "@mcrowe/safe-async-express-errors": "0.0.2",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "lodash": "^4.17.4",
+    "morgan": "^1.7.0",
+    "pg-promise": "^5.3.3",
+    "ts-node": "^2.1.0",
+    "typescript": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.35",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.12",
+    "nodemon": "^1.11.0",
+    "mocha": "^3.2.0"
+  }
+}
