@@ -2,7 +2,7 @@
   "compileOnSave": true,
   "allowJS": false,
   "compilerOptions": {
-    "watch": true,
+    "watch": false,
     "outDir": "./dist/",
     "sourceMap": true,
     "module": "commonjs",

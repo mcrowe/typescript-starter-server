@@ -1,7 +1,3 @@
-import dotenv = require('dotenv')
-dotenv.config()
-
-
 interface Config {
   PORT: number,
   DATABASE_URL: string
@@ -9,7 +5,7 @@ interface Config {
 
 
 const config: Config = {
-  PORT: process.env.PORT || 3000,
+  PORT: parseInt(process.env.PORT),
   DATABASE_URL: process.env.DATABASE_URL
 }
 

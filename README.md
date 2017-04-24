@@ -4,21 +4,21 @@ Basic typescript server starter with express/postgres/mocha.
 
 See `TEMPLATE.md` for template usage instructions.
 
-# Install
+## Setup
 
-Install node modules
+Install node modules:
 
 > npm install
 
-Create the database
+Create the database:
 
-> ./bin/create-db
+> ./bin/create-db.sh
 
-# Development
+Create and configure a `.env` file:
 
-Start the server:
+> cp .env.example .env
 
-> npm start
+## Usage
 
 Start the server in "watch" mode:
 
@@ -28,6 +28,6 @@ Run tests:
 
 > npm test
 
-# Database
+## Database
 
 To migrate the database, connect directly to it and execute DDL commands. Add any changes to `db/schema.sql` for other developers.

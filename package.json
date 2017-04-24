@@ -2,19 +2,23 @@
   "name": "typescript-start-server",
   "version": "0.0.1",
   "description": "typescript-starter-server",
-  "main": "src/index.js",
-  "scripts": {
-    "watch": "./node_modules/nodemon/bin/nodemon.js --watch src --watch .env -e ts --exec 'npm start'",
-    "start": "./node_modules/ts-node/dist/bin.js src/index.ts",
-    "test": "./node_modules/mocha/bin/mocha -u qunit --recursive -r ./node_modules/ts-node/register test/**/*.ts"
-  },
   "author": "Mitch Crowe <crowe.mitch@gmail.com> (http://www.mitchcrowe.com)",
   "license": "ISC",
   "engines": {
     "node": "6.4.0"
   },
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node -r dotenv/config -r @mcrowe/env-check dist/index.js",
+    "test": "mocha -u qunit --recursive -r ts-node/register -r dotenv/config -r @mcrowe/env-check 'test/**/*.ts'",
+    "build": "tsc && cp -rf src/views dist",
+    "watch": "nodemon --watch src --watch .env -e ts --exec 'npm run start-ts'",
+    "start-ts": "ts-node -r dotenv/config -r @mcrowe/env-check src/index.ts",
+    "console": "ts-repl -r dotenv/config -r @mcrowe/env-check"
+  },
   "dependencies": {
-    "@mcrowe/safe-async-express-errors": "0.0.2",
+    "@mcrowe/env-check": "0.0.3",
+    "@mcrowe/safe-async-express-errors": "0.0.3",
     "@mcrowe/sql-builder": "0.0.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
@@ -23,16 +27,23 @@
     "express": "^4.14.0",
     "lodash": "^4.17.4",
     "morgan": "^1.7.0",
-    "pg-promise": "^5.3.3",
-    "ts-node": "^2.1.0",
-    "typescript": "^2.1.4"
+    "pg-promise": "^5.3.3"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.35",
-    "@types/mocha": "^2.2.39",
-    "@types/node": "^7.0.12",
+    "@mcrowe/ts-repl": "0.0.4",
+    "@types/core-js": "^0.9.41",
     "@types/express": "^4.0.35",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.12",
+    "mocha": "^3.3.0",
     "nodemon": "^1.11.0",
-    "mocha": "^3.2.0"
+    "ts-node": "^3.0.2",
+    "typescript": "^2.2.2"
+  },
+  "env": {
+    "required": {
+      "PORT": "Port to listen on",
+      "DATABASE_URL": "Database URL for Postgres"
+    }
   }
 }
