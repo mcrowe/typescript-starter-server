@@ -1,3 +1,4 @@
+import '@mcrowe/gotenv'
 import express = require('express')
 import morgan = require('morgan')
 import bodyParser = require('body-parser')

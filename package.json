@@ -9,20 +9,19 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "start": "node -r dotenv/config -r @mcrowe/env-check dist/index.js",
-    "test": "mocha -u qunit --recursive -r ts-node/register -r dotenv/config -r @mcrowe/env-check 'test/**/*.ts'",
+    "start": "node dist/index.js",
+    "test": "mocha -u qunit --recursive -r ts-node/register -r @mcrowe/gotenv 'test/**/*.ts'",
     "build": "tsc && cp -rf src/views dist",
     "watch": "nodemon --watch src --watch .env -e ts --exec 'npm run start-ts'",
-    "start-ts": "ts-node -r dotenv/config -r @mcrowe/env-check src/index.ts",
-    "console": "ts-repl -r dotenv/config -r @mcrowe/env-check"
+    "start-ts": "ts-node src/index.ts",
+    "console": "ts-repl -r @mcrowe/gotenv"
   },
   "dependencies": {
-    "@mcrowe/env-check": "0.0.3",
+    "@mcrowe/gotenv": "0.0.2",
     "@mcrowe/safe-async-express-errors": "0.0.3",
     "@mcrowe/sql-builder": "0.0.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
-    "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "lodash": "^4.17.4",
