@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("@mcrowe/gotenv");
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -10,8 +11,8 @@ const app = express();
 // Handle requests for static assets in the public directory.
 // e.g. /assets/a.png => /public/a.png
 app.use('/assets', express.static(__dirname + '/../public'));
-// Render 'ejs' views from 'src/views'
-app.set('views', __dirname + '/views');
+// Render 'ejs' views from '..//views'
+app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
 // Make parsed cookies available in handlers
 app.use(cookieParser());
@@ -20,14 +21,14 @@ app.use(morgan('tiny'));
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // Enable CORS on all resources
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 app.use('/', router_1.default);
 // Handle uncaught errors (must go after routes)
-app.use((err, req, res, next) => {
+app.use((err, _req, res, next) => {
     if (res.headersSent) {
         return next(err);
     }

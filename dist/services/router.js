@@ -22,7 +22,7 @@ router.get('/things', safe_async_express_errors_1.default((_req, res) => __await
 })));
 router.get('/things/:id', safe_async_express_errors_1.default((req, res) => __awaiter(this, void 0, void 0, function* () {
     const id = req.params.id;
-    const thing = yield db_1.default.oneOrNone(sql_builder_1.default.find('things', 1));
+    const thing = yield db_1.default.oneOrNone(sql_builder_1.default.find('things', id));
     if (thing) {
         res.status(200).json({ error: null, data: thing });
     }
@@ -34,7 +34,7 @@ router.get('/syncerror', (_req, _res) => {
     throw new Error('Sync Error');
 });
 router.get('/asyncerror', safe_async_express_errors_1.default((_req, _res) => __awaiter(this, void 0, void 0, function* () {
-    const things = yield db_1.default.many(sql_builder_1.default.all('things'));
+    yield db_1.default.many(sql_builder_1.default.all('things'));
     throw new Error('Async Error');
 })));
 exports.default = router;

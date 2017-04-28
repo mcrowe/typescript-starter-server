@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 .env
 .ts-repl-history
+src/tasks/scratch.ts
+dist/tasks/scratch.js*
